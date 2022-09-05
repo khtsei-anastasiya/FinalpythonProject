@@ -20,7 +20,7 @@ def open_browser():
 
 
 @allure.story('Open Django admin group page')
-def open_django_admin(open_browser):
+def test_open_django_admin(open_browser):
     main_page = MainPageDjango(open_browser, link)
     with allure.step('Open main page'):
         main_page.open_browser()
