@@ -1,8 +1,9 @@
 import pytest
 import allure
+import urllib3
 from selenium import webdriver
 import webdriver_manager.chrome
-from project.pages.main_page import MainPageDjango
+from ..pages.main_page import MainPageDjango
 
 
 link = 'http://127.0.0.1:8000'
