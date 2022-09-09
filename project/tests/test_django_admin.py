@@ -4,6 +4,7 @@ import urllib3
 from selenium import webdriver
 import webdriver_manager.chrome
 from ..pages.main_page import MainPageDjango
+from project.db_task import *
 
 
 link = 'http://127.0.0.1:8000'
@@ -19,10 +20,19 @@ def open_browser():
         browser.quit()
 
 
-@allure.story('Open Django admin group page')
+@allure.story('Check created group at the django admin')
 def test_open_django_admin(open_browser):
+    with allure.step('Insert group to db'):
+        group_adding()
     main_page = MainPageDjango(open_browser, link)
     with allure.step('Open main page'):
         main_page.open_browser()
     with allure.step('Open Django admin'):
         main_page.open_admin_django()
+    with allure.step('login'):
+        main_page.login_user_django(username='admin', passwd='password')
+    with allure.step('Open group tab'):
+        main_page.open_groups_tab()
+    with allure.step('Verify group'):
+        main_page.check_group_name(group='akhtsei')
+

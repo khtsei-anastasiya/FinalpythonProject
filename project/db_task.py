@@ -9,11 +9,9 @@ def group_adding():
 
     try:
         cursor = conn.cursor()
-        query = "INSERT INTO auth_group (id, name) VALUES (default, 'admins_test_group2')"
+        query = "INSERT INTO auth_group (id, name) VALUES (default, 'akhtsei')"
         cursor.execute(query)
         conn.commit()
-        g_name = cursor.fetchall()
-        assert g_name == 'admins_test_group', 'Oops... Group name doesn\'t match!'
     finally:
         conn.close()
 
@@ -33,3 +31,6 @@ def user_belongs_to_group():
 
     finally:
         conn.close()
+
+
+
