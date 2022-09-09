@@ -7,3 +7,4 @@ class MainPageLocDjango:
 
     group_btn_loc = (By.XPATH, '//a[contains(text(),"Groups")]')
     group_row_loc = (By.XPATH, '//th[@class="field-__str__"]')
+    user_btn_loc = (By.XPATH, '//a[contains(text(),"Users")]')
