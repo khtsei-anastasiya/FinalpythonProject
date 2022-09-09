@@ -34,5 +34,5 @@ def test_open_django_admin(open_browser):
     with allure.step('Open group tab'):
         main_page.open_groups_tab()
     with allure.step('Verify group'):
-        main_page.check_group_name(group='akhtsei')
+        main_page.check_group_name(group='akhtseii')
 
