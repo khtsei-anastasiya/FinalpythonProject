@@ -49,7 +49,7 @@ def test_add_user_from_ui_at_db(open_browser):
     with allure.step('Open Users tab'):
         main_page.open_users_tab()
     with allure.step('Click Add user button'):
-        users_page = UsersPageDjango()
+        users_page = UsersPageDjango(open_browser, link)
         users_page.open_add_users_page()
     with allure.step('Add User'):
         users_page.add_user(username='akhtsei', password='1234', password2='1234')
