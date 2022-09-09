@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
+
 class MainPageLoc:
     main_page_url_loc = 'http://127.0.0.1:8000'
     admin_btn = (By.XPATH, '//a[contains(text(),"Go to Admin")]')

@@ -1,6 +1,8 @@
 from project.pages.base_page import BasePage
 from project.locators.main_page_loc import MainPageLoc
 from project.locators.django_admin_main import MainPageLocDjango
+from project.pages.django_admin_users import UsersPageDjango
+from project.locators.django_admin_users_page import UsersPageLocDjango
 
 link = 'http://127.0.0.1:8000/admin/login/?next=/admin/'
 
@@ -25,3 +27,7 @@ class MainPageDjango(BasePage):
     def check_group_name(self, group: str):
         find_group_row = self.chrome.find_element(*MainPageLocDjango.group_row_loc).text
         assert find_group_row == group
+
+    def open_users_tab(self):
+        find_users_link = self.chrome.find_element(*MainPageLocDjango.user_btn_loc)
+        find_users_link.click()
