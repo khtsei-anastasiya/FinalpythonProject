@@ -52,4 +52,10 @@ def test_add_user_from_ui_at_db(open_browser):
         users_page = UsersPageDjango(open_browser, link)
         users_page.open_add_users_page()
     with allure.step('Add User'):
-        users_page.add_user(username='akhtsei', password='1234', password2='1234')
+        users_page.add_user(username='akhtsei', password='user12345', password2='user12345')
+    with allure.step('Add user to the group'):
+        users_page.add_user_to_group()
+    with allure.step('Check username was added to the group'):
+        user_belongs_to_group(username='akhtsei')
+
+

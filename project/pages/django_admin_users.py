@@ -18,3 +18,11 @@ class UsersPageDjango(BasePage):
         find_pass2_field.send_keys(password2)
         find_safe_btn = self.chrome.find_element(*UsersPageLocDjango.save_btn_loc)
         find_safe_btn.click()
+
+    def add_user_to_group(self):
+        find_group = self.chrome.find_element(*UsersPageLocDjango.group_name_loc)
+        find_group.click()
+        find_add_btn = self.chrome.find_element(*UsersPageLocDjango.groups_add_btn)
+        find_add_btn.click()
+        find_safe_btn = self.chrome.find_element(*UsersPageLocDjango.save_btn_loc)
+        find_safe_btn.click()
