@@ -37,8 +37,8 @@ def test_open_django_admin(open_browser):
         main_page.check_group_name(group='akhtsei')
 
 
-@allure.story('Check user at DB added from UI')
-def test_add_user_from_ui_at_db(open_browser):
+@allure.story('Check added from UI user belongs to the group via DB')
+def test_check_via_db_user_added_from_ui_at_group(open_browser):
     main_page = MainPageDjango(open_browser, link)
     with allure.step('Open main page'):
         main_page.open_browser()
@@ -58,4 +58,30 @@ def test_add_user_from_ui_at_db(open_browser):
     with allure.step('Check username was added to the group'):
         user_belongs_to_group(username='akhtsei')
 
+
+@allure.story('Newly created user can login to the admin')
+def test_new_user_can_login_django_admin(open_browser):
+    main_page = MainPageDjango(open_browser, link)
+    with allure.step('Open main page'):
+        main_page.open_browser()
+    with allure.step('Open Django admin'):
+        main_page.open_admin_django()
+    with allure.step('Login'):
+        main_page.login_user_django(username='admin', passwd='password')
+    with allure.step('Open Users tab'):
+        main_page.open_users_tab()
+    with allure.step('Click Add user button'):
+        users_page = UsersPageDjango(open_browser, link)
+        users_page.open_add_users_page()
+    with allure.step('Add User'):
+        users_page.add_user(username='akhtsei2', password='user12345', password2='user12345')
+        users_page.set_staff_status()
+    with allure.step('Check user name at DB'):
+        user_presents_at_users_table(username='akhtsei2')
+    with allure.step('Log out admin'):
+        main_page.user_log_out()
+    with allure.step('Login new user'):
+        main_page.login_again()
+        main_page.login_new_user_django(username='akhtsei2', passwd='user12345')
+        main_page.check_user_name(user_name='akhtsei2')
 

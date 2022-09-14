@@ -26,3 +26,9 @@ class UsersPageDjango(BasePage):
         find_add_btn.click()
         find_safe_btn = self.chrome.find_element(*UsersPageLocDjango.save_btn_loc)
         find_safe_btn.click()
+
+    def set_staff_status(self):
+        find_status_control = self.chrome.find_element(*UsersPageLocDjango.staff_check_box)
+        find_status_control.click()
+        find_safe_btn = self.chrome.find_element(*UsersPageLocDjango.save_btn_loc)
+        find_safe_btn.click()

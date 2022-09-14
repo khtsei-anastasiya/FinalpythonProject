@@ -37,4 +37,35 @@ def user_belongs_to_group(username: str):
         conn.close()
 
 
+def user_presents_at_users_table(username: str):
+    conn = psycopg2.connect(host='127.0.0.1',
+                            user='postgres',
+                            password='postgres'
+                            )
 
+    try:
+        cursor = conn.cursor()
+        query = "SELECT username FROM auth_user WHERE username = 'akhtsei2'"
+        cursor.execute(query)
+        u_name = cursor.fetchone()
+        for names in u_name:
+            u_name == names
+        assert names == username, f"Oops... User name {names} does not match to {username}!"
+
+    finally:
+        conn.close()
+
+
+def img_deletion():
+    conn = psycopg2.connect(host='127.0.0.1',
+                            user='postgres',
+                            password='postgres'
+                            )
+
+    try:
+        cursor = conn.cursor()
+        query = "DELETE from app_post where id=(SELECT min(id) from app_post)"
+        cursor.execute(query)
+
+    finally:
+        conn.close()

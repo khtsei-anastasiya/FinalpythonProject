@@ -31,3 +31,26 @@ class MainPageDjango(BasePage):
     def open_users_tab(self):
         find_users_link = self.chrome.find_element(*MainPageLocDjango.user_btn_loc)
         find_users_link.click()
+
+    def user_log_out(self):
+        find_log_out_btn = self.chrome.find_element(*MainPageLocDjango.logout_btn)
+        find_log_out_btn.click()
+
+    def login_again(self):
+        find_login_again_btn = self.chrome.find_element(*MainPageLocDjango.login_again_btn)
+        find_login_again_btn.click()
+
+    def login_new_user_django(self, username, passwd):
+        find_username_field = self.chrome.find_element(*MainPageLoc.username_field)
+        find_username_field.clear()
+        find_username_field.send_keys(username)
+        find_passwd_field = self.chrome.find_element(*MainPageLoc.passwd_field)
+        find_passwd_field.clear()
+        find_passwd_field.send_keys(passwd)
+        find_login_btn = self.chrome.find_element(*MainPageLoc.login_btn)
+        find_login_btn.click()
+
+    def check_user_name(self, user_name: str):
+        find_user_tools_row = self.chrome.find_element(*MainPageLocDjango.user_tools).text()
+        print(find_user_tools_row)
+        assert find_user_tools_row == user_name, f"Oops... User name {find_user_tools_row} does not match to {user_name}!"

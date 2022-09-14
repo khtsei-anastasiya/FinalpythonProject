@@ -8,3 +8,9 @@ class MainPageLocDjango:
     group_btn_loc = (By.XPATH, '//a[contains(text(),"Groups")]')
     group_row_loc = (By.XPATH, '//th[@class="field-__str__"]')
     user_btn_loc = (By.XPATH, '//a[contains(text(),"Users")]')
+    logout_btn = (By.XPATH, '//button[contains(text(),"Log out")]')
+    login_again_btn = (By.XPATH, "//a[contains(text(),'Log in again')]")
+    user_tools = (By.CLASS_NAME, '//div[@id="user-tools"]/strong')
+
+
+
