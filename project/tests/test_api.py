@@ -14,4 +14,19 @@ class TestApiCases:
         with allure.step('Logout user'):
             logout_user()
         with allure.step('Delete user'):
-            delete_user("1")
+            delete_user("test23")
+
+    @allure.story('Everything about your Pets')
+    def test_pet_manipulations(self):
+        with allure.step('Create new pet'):
+            add_new_pet_to_store(pet_id=242424578, category_id=345, category_name='dog', pet_name='Welzevool',
+                                 tags_id=234,
+                                 tags_name='doggo', status="available")
+        with allure.step('Check pet by id'):
+            check_added_pet(pet_id=242424578)
+        with allure.step('Update pet name'):
+            update_pet_data(pet_id=242424578, category_id=345, category_name='dog', pet_name='Marley',
+                            tags_id=234,
+                            tags_name='doggo', status="available")
+        with allure.step('Check updates'):
+            check_pet_updates(pet_id=242424578, pet_name='Marley')
