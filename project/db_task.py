@@ -54,18 +54,3 @@ def user_presents_at_users_table(username: str):
 
     finally:
         conn.close()
-
-
-def img_deletion():
-    conn = psycopg2.connect(host='127.0.0.1',
-                            user='postgres',
-                            password='postgres'
-                            )
-
-    try:
-        cursor = conn.cursor()
-        query = "DELETE from app_post where id=(SELECT min(id) from app_post)"
-        cursor.execute(query)
-
-    finally:
-        conn.close()
