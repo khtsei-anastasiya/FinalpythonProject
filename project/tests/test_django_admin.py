@@ -1,10 +1,10 @@
 import pytest
 import allure
-import urllib3
 from selenium import webdriver
 import webdriver_manager.chrome
 from ..pages.main_page import MainPageDjango
 from ..pages.django_admin_users import UsersPageDjango
+from ..pages.django_admin_posts import PostsPageDjango
 from project.db_task import *
 
 link = 'http://127.0.0.1:8000'
@@ -84,4 +84,26 @@ def test_new_user_can_login_django_admin(open_browser):
         main_page.login_again()
         main_page.login_new_user_django(username='akhtsei2', passwd='user12345')
         main_page.check_user_name(user_name='akhtsei2')
+
+
+@allure.story('Img deletion verification')
+def test_img_deleted_via_admin(open_browser):
+    main_page = MainPageDjango(open_browser, link)
+    with allure.step('Open main page'):
+        main_page.open_browser()
+    with allure.step('Check img source data'):
+        main_page.get_img_attribute()
+    with allure.step('Open Django admin'):
+        main_page.open_admin_django()
+    with allure.step('Login'):
+        main_page.login_user_django(username='admin', passwd='password')
+    with allure.step('Open posts page'):
+        main_page.open_posts_tab()
+        posts_page = PostsPageDjango(open_browser, link)
+        posts_page.select_last_element()
+        posts_page.delete_last_element()
+    with allure.step('Click view site link'):
+        main_page.view_site()
+    with allure.step('Find deleted img'):
+        main_page.check_img_deleted()
 

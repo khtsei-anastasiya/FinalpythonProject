@@ -7,4 +7,5 @@ class MainPageLoc:
     username_field = (By.XPATH, '//input[@id="id_username"]')
     passwd_field = (By.XPATH, '//input[@id="id_password"]')
     login_btn = (By.XPATH, '//input[@type="submit"]')
+    img_last = (By.XPATH, '(//img[@class="card-img-top"])[last()]')
 

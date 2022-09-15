@@ -11,6 +11,8 @@ class MainPageLocDjango:
     logout_btn = (By.XPATH, '//button[contains(text(),"Log out")]')
     login_again_btn = (By.XPATH, "//a[contains(text(),'Log in again')]")
     user_tools = (By.XPATH, '//div[@id="user-tools"]/strong')
+    posts_button_loc = (By.XPATH, '//a[contains(text(),"Posts")]')
+    view_page_link = (By.XPATH, '//a[contains(text(),"View site")]')
 
 
 
