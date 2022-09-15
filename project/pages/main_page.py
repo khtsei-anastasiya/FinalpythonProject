@@ -51,6 +51,6 @@ class MainPageDjango(BasePage):
         find_login_btn.click()
 
     def check_user_name(self, user_name: str):
-        find_user_tools_row = self.chrome.find_element(*MainPageLocDjango.user_tools).text()
-        print(find_user_tools_row)
-        assert find_user_tools_row == user_name, f"Oops... User name {find_user_tools_row} does not match to {user_name}!"
+        find_user_tools_row = self.chrome.find_element(*MainPageLocDjango.user_tools).text
+        u_tools = find_user_tools_row.lower()
+        assert u_tools == user_name, f"Oops... User name {find_user_tools_row} does not match to {user_name}!"
